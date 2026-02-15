@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>nasze-rachunki.pl | Wspólne planowanie wydatków i przypomnienia o płatnościach</title>
+    <meta name="description" content="Nowoczesna aplikacja dla par i rodzin do zarządzania domowymi finansami. Kontroluj płatności, ustawiaj przypomnienia i zarządzaj budżetem bez łączenia się z bankiem.">
+    <meta name="keywords" content="budżet domowy, wspólne finanse, aplikacja do rachunków, planowanie wydatków, przypomnienia o płatnościach, oszczędzanie dla par">
+    <meta name="author" content="nasze-rachunki.pl">
+    
+    <link rel="canonical" href="https://nasze-rachunki.pl">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- Google Analytics - z consent mode -->
+    <script>
+      // Domyślnie blokuj GA do czasu zgody
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+      
+      gtag('js', new Date());
+      gtag('config', 'G-5YF3QV2NPT');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YF3QV2NPT"></script>
+    
+    <meta property="og:title" content="nasze-rachunki.pl | Twoje finanse pod kontrolą">
+    <meta property="og:description" content="Śledź wydatki i planuj płatności razem z bliskimi. Prosto, bezpiecznie i bez wglądu w Twoje konto bankowe.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nasze-rachunki.pl">
+    <meta property="og:image" content="https://nasze-rachunki.pl/logo-nasze-rachunki.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-mint { background-color: #48A9A6; }
+        .text-mint { color: #48A9A6; }
+        .border-mint { border-color: #48A9A6; }
+        details summary { list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary::after { content: " ▲"; }
+        details summary::after { content: " ▼"; float: right; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <header class="container mx-auto px-6 py-6 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 bg-mint rounded-lg flex items-center justify-center text-white font-bold text-xl">NR</div>
+            <span class="text-xl font-bold tracking-tight text-navy">nasze-rachunki.pl</span>
+        </div>
+        <div class="hidden md:block">
+            <span class="bg-white px-4 py-2 rounded-full border border-slate-200 text-sm font-medium shadow-sm">🚀 Premiera wkrótce</span>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="container mx-auto px-6 pt-12 pb-16 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+                Domowe finanse pod kontrolą. <br class="hidden md:block">
+                <span class="text-mint leading-relaxed italic md:not-italic">Wspólnie.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed">
+                Kontroluj co musisz opłacić, sprawdzaj co już jest zapłacone i ustawiaj inteligentne przypomnienia. Bezpieczny system, który ułatwia codzienne życie.
+            </p>
+
+            <div class="bg-white p-2 rounded-2xl shadow-xl border border-slate-100 max-w-lg mx-auto mb-4">
+                <form id="emailForm" class="flex flex-col md:flex-row gap-2">
+                    <div class="flex-1">
+                        <input type="email" id="emailInput" name="email" placeholder="Twój adres e-mail" required 
+                               class="w-full px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-mint border-none bg-slate-50">
+                        <p id="emailError" class="text-red-600 text-sm mt-2 ml-2 hidden"></p>
+                    </div>
+                    <button type="submit" class="bg-mint hover:bg-opacity-90 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg active:scale-95">
+                        Zarezerwuj dostęp →
+                    </button>
+                </form>
+            </div>
+            
+            <p class="text-sm text-slate-500">
+                Damy Ci znać, gdy tylko będziemy gotowi do startu. Zero spamu.
+            </p>
+        </div>
+    </main>
+
+    <!-- WORKING ON APP MESSAGE -->
+    <section class="container mx-auto px-6 mb-20">
+        <div class="max-w-3xl mx-auto text-center bg-white rounded-3xl shadow-lg p-12">
+            <div class="text-6xl mb-4">❤️</div>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+                Pracujemy nad aplikacją, którą pokochasz
+            </h2>
+            <p class="text-slate-600 text-lg">
+                Dopracowujemy każdy szczegół, aby zarządzanie domowymi finansami było przyjemnością, nie obowiązkiem.
+            </p>
+        </div>
+    </section>
+
+    <!-- FEATURES CHECKLIST -->
+    <section class="container mx-auto px-6 py-16 mb-12">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Co dostaniesz?</h2>
+            <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+                Wszystko czego potrzebujesz, żeby domowe finanse były pod kontrolą
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex items-start space-x-4">
+                    <span class="text-mint text-3xl flex-shrink-0">✓</span>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Wyślij komuś przypomnienie</h4>
+                        <p class="text-sm text-slate-600">Partner zapomniał opłacić czynsz? Wyślij mu delikatne przypomnienie jednym kliknięciem, bez niezręcznej rozmowy.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <span class="text-mint text-3xl flex-shrink-0">✓</span>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Cykliczne wydatki</h4>
+                        <p class="text-sm text-slate-600">Czynsz, prąd, internet - raz wpisane, zawsze widoczne. System automatycznie generuje nadchodzące płatności.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <span class="text-mint text-3xl flex-shrink-0">✓</span>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Inteligentne przypomnienia</h4>
+                        <p class="text-sm text-slate-600">Powiadomienia o zbliżających się płatnościach dokładnie wtedy, kiedy potrzebujesz. Zero stresu, zero zapomnianych rachunków.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <span class="text-mint text-3xl flex-shrink-0">✓</span>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Dzielenie kosztów</h4>
+                        <p class="text-sm text-slate-600">Kto co ma zapłacić w tym miesiącu? Wszystko jasne i przejrzyste dla całego gospodarstwa domowego.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <span class="text-mint text-3xl flex-shrink-0">✓</span>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Błyskawicznie proste</h4>
+                        <p class="text-sm text-slate-600">Dodaj wydatek lub oznacz płatność w kilka sekund. Intuicyjny interfejs, który po prostu działa.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <span class="text-mint text-3xl flex-shrink-0">✓</span>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Historia płatności</h4>
+                        <p class="text-sm text-slate-600">Zobacz ile wydałeś w ostatnim miesiącu, roku. Proste raporty bez kombinowania.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVACY SECTION -->
+    <section class="container mx-auto px-6 mb-20">
+        <div class="bg-[#1E293B] text-white p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden text-center">
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-3">Twoja prywatność jest priorytetem 🛡️</h2>
+                <p class="text-slate-300 mb-8 max-w-2xl mx-auto">
+                    W przeciwieństwie do innych aplikacji finansowych, nie ingerujemy w Twoje konto bankowe
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
+                    <div class="flex items-start space-x-3">
+                        <div class="text-mint text-2xl flex-shrink-0">✔</div>
+                        <p class="text-slate-300"><span class="text-white font-semibold">Nie łączymy się z bankiem</span> – Twoje hasła i saldo są bezpieczne tam, gdzie ich miejsce.</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-mint text-2xl flex-shrink-0">✔</div>
+                        <p class="text-slate-300"><span class="text-white font-semibold">Brak analizy danych</span> – Nie sprzedajemy informacji o Twoich nawykach zakupowych.</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-mint text-2xl flex-shrink-0">✔</div>
+                        <p class="text-slate-300"><span class="text-white font-semibold">Tylko to, co wpiszesz</span> – System widzi tylko te wydatki, które zdecydujesz się dodać.</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-mint text-2xl flex-shrink-0">✔</div>
+                        <p class="text-slate-300"><span class="text-white font-semibold">Dane w Europie</span> – Wszystkie informacje przechowywane na serwerach w Unii Europejskiej. Pełna zgodność z RODO.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- FAQ SECTION -->
+    <section class="container mx-auto px-6 py-16 max-w-3xl mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Najczęstsze pytania</h2>
+        <div class="space-y-4">
+            <details class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <summary class="font-semibold cursor-pointer text-lg">Kiedy premiera?</summary>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                    Ciężko pracujemy nad pierwszą wersją aplikacji. <strong>Zapisz się na listę</strong>, a powiadomimy Cię jako pierwszy, gdy tylko uruchomimy system. Planujemy start w ciągu najbliższych miesięcy!
+                </p>
+            </details>
+
+            <details class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <summary class="font-semibold cursor-pointer text-lg">Czy muszę łączyć aplikację z kontem bankowym?</summary>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                    <strong>Nie!</strong> To jeden z naszych głównych priorytetów. W przeciwieństwie do innych aplikacji finansowych, nie wymagamy dostępu do Twojego konta bankowego. Sam wpisujesz wydatki, które chcesz śledzić. Twoje hasła bankowe są bezpieczne.
+                </p>
+            </details>
+            
+            <details class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <summary class="font-semibold cursor-pointer text-lg">Ile osób może korzystać z jednego konta?</summary>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                    Aplikacja jest stworzona dla par i rodzin. W wersji darmowej będziesz mógł <strong>zaprosić partnera/partnerkę</strong> (łącznie 2 osoby na koncie). Wszyscy będziecie widzieć te same wydatki i mogli je aktualizować.
+                </p>
+            </details>
+
+            <details class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <summary class="font-semibold cursor-pointer text-lg">Jak bezpieczne są moje dane?</summary>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                    Bardzo! Twoje dane przechowujemy na zabezpieczonych serwerach w Europie. Nie sprzedajemy ich reklamodawcom. Twoja prywatność to nasz priorytet.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="container mx-auto px-6 py-16 mb-12">
+        <div class="bg-gradient-to-r from-[#2d7a78] to-[#1e5a58] rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Gotowy na kontrolę nad domowymi finansami?</h2>
+            <p class="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+                Dołącz do listy oczekujących i otrzymaj <strong>darmowy dostęp</strong> od pierwszego dnia premiery
+            </p>
+            <div class="bg-white p-2 rounded-2xl shadow-xl max-w-md mx-auto">
+                <form id="emailForm2" class="flex flex-col gap-3">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="email" id="emailInput2" name="email" placeholder="Twój adres e-mail" required 
+                               class="flex-1 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-mint border-none text-slate-900">
+                        <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg active:scale-95">
+                            Zapisz mnie! →
+                        </button>
+                    </div>
+                    <p id="emailError2" class="text-red-600 text-sm ml-2 hidden"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- COOKIE CONSENT BANNER -->
+    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-200 p-6 shadow-2xl z-50" style="display: none;">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold text-lg mb-2">🍪 Szanujemy Twoją prywatność</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Używamy plików cookie do analizy ruchu na stronie (Google Analytics). Pomaga nam to zrozumieć, jak użytkownicy korzystają z naszej witryny. Nie udostępniamy Twoich danych osobowych podmiotom trzecim. 
+                        <a href="/polityka-prywatnosci.html" class="text-mint underline hover:text-[#3d8e8c]">Polityka prywatności</a>
+                    </p>
+                </div>
+                <div class="flex gap-3 flex-shrink-0">
+                    <button onclick="rejectCookies()" class="px-6 py-2 border-2 border-slate-300 rounded-lg hover:bg-slate-50 transition-colors font-medium">
+                        Odrzuć
+                    </button>
+                    <button onclick="acceptCookies()" class="bg-mint text-white px-6 py-2 rounded-lg hover:bg-opacity-90 font-semibold transition-all shadow-lg">
+                        Akceptuję
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-slate-200">
+        <div class="container mx-auto px-6 text-center text-slate-500 text-sm">
+            <p class="mb-4">&copy; 2026 nasze-rachunki.pl | Wszystkie prawa zastrzeżone</p>
+            <div class="space-x-6">
+                <a href="/polityka-prywatnosci.html" class="hover:text-mint transition-colors">Polityka prywatności</a>
+                <a href="mailto:kontakt@nasze-rachunki.pl" class="hover:text-mint transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for cookie consent and email form handling -->
+    <script>
+        // Google Forms configuration
+        const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeyVv6VM8JmZwMG2E_15gufXEWhndns5h8fY6jsu7AMCXz5sQ/formResponse';
+        const EMAIL_ENTRY_ID = 'entry.133011632';
+
+        // Email validation function
+        function validateEmail(email) {
+            // Usuń białe znaki
+            email = email.trim();
+            
+            // Sprawdź czy email jest pusty
+            if (!email) {
+                return { valid: false, message: 'Proszę podać adres e-mail' };
+            }
+            
+            // Sprawdź czy zawiera spacje
+            if (email.includes(' ')) {
+                return { valid: false, message: 'Adres e-mail nie może zawierać spacji' };
+            }
+            
+            // Regex dla poprawnego formatu email
+            const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            if (!emailRegex.test(email)) {
+                // Sprawdź konkretne błędy
+                if (!email.includes('@')) {
+                    return { valid: false, message: 'Adres e-mail musi zawierać znak @' };
+                }
+                
+                const parts = email.split('@');
+                if (parts.length !== 2) {
+                    return { valid: false, message: 'Adres e-mail może zawierać tylko jeden znak @' };
+                }
+                
+                if (parts[0].length === 0) {
+                    return { valid: false, message: 'Proszę podać nazwę przed znakiem @' };
+                }
+                
+                if (!parts[1].includes('.')) {
+                    return { valid: false, message: 'Proszę podać poprawną domenę (np. gmail.com)' };
+                }
+                
+                const domainParts = parts[1].split('.');
+                if (domainParts[domainParts.length - 1].length < 2) {
+                    return { valid: false, message: 'Rozszerzenie domeny jest za krótkie (np. .com, .pl)' };
+                }
+                
+                return { valid: false, message: 'Proszę podać poprawny adres e-mail' };
+            }
+            
+            // Sprawdź czy domena ma sens (prosta lista popularnych TLD)
+            const domain = email.split('@')[1].toLowerCase();
+            const validTLDs = ['com', 'pl', 'org', 'net', 'edu', 'gov', 'co', 'io', 'app', 'dev', 'me', 'eu', 'uk', 'de', 'fr', 'es', 'it', 'nl', 'be', 'ch', 'at', 'cz', 'sk', 'info', 'biz'];
+            const tld = domain.split('.').pop();
+            
+            if (!validTLDs.includes(tld)) {
+                return { valid: false, message: 'Proszę sprawdzić rozszerzenie domeny (np. .com, .pl, .org)' };
+            }
+            
+            return { valid: true, message: '' };
+        }
+
+        // Show error message
+        function showError(inputId, errorId, message) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            
+            input.classList.add('ring-2', 'ring-red-500');
+            input.classList.remove('ring-green-500');
+            error.textContent = '⚠️ ' + message;
+            error.classList.remove('hidden');
+        }
+
+        // Show success (green border)
+        function showSuccess(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            
+            input.classList.add('ring-2', 'ring-green-500');
+            input.classList.remove('ring-red-500');
+            error.classList.add('hidden');
+        }
+
+        // Clear validation
+        function clearValidation(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            
+            input.classList.remove('ring-2', 'ring-red-500', 'ring-green-500');
+            error.classList.add('hidden');
+        }
+
+        // Function to submit email to Google Forms
+        function submitToGoogleForms(email) {
+            const formData = new FormData();
+            formData.append(EMAIL_ENTRY_ID, email);
+
+            // Send to Google Forms (no-cors mode - fire and forget)
+            fetch(GOOGLE_FORM_ACTION, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).catch(err => {
+                console.log('Form submission attempt completed');
+            });
+
+            // Track in Google Analytics (if consent given)
+            if (localStorage.getItem('cookieConsent') === 'accepted') {
+                gtag('event', 'generate_lead', {
+                    'event_category': 'engagement',
+                    'event_label': 'waitlist_signup'
+                });
+            }
+        }
+
+        // Cookie consent management
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieConsent').style.display = 'none';
+            
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+            
+            gtag('event', 'cookie_consent_accepted');
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+
+        // Check consent on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const consent = localStorage.getItem('cookieConsent');
+            
+            if (!consent) {
+                document.getElementById('cookieConsent').style.display = 'block';
+            } else if (consent === 'accepted') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            }
+
+            // Handle first form (hero section)
+            const form1 = document.getElementById('emailForm');
+            const emailInput1 = document.getElementById('emailInput');
+            
+            if (form1 && emailInput1) {
+                // Real-time validation on blur
+                emailInput1.addEventListener('blur', function() {
+                    const email = this.value.trim();
+                    if (email) {
+                        const validation = validateEmail(email);
+                        if (!validation.valid) {
+                            showError('emailInput', 'emailError', validation.message);
+                        } else {
+                            showSuccess('emailInput', 'emailError');
+                        }
+                    }
+                });
+
+                // Clear validation on focus
+                emailInput1.addEventListener('focus', function() {
+                    clearValidation('emailInput', 'emailError');
+                });
+
+                // Form submission
+                form1.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = emailInput1.value.trim();
+                    
+                    const validation = validateEmail(email);
+                    
+                    if (!validation.valid) {
+                        showError('emailInput', 'emailError', validation.message);
+                        emailInput1.focus();
+                        return;
+                    }
+                    
+                    // Email is valid - submit
+                    submitToGoogleForms(email);
+                    showSuccess('emailInput', 'emailError');
+                    alert('Dziękujemy! 🎉\n\nDodaliśmy Cię na listę oczekujących. Powiadomimy Cię mailem, gdy tylko będziemy gotowi do startu!');
+                    emailInput1.value = '';
+                    clearValidation('emailInput', 'emailError');
+                });
+            }
+
+            // Handle second form (final CTA)
+            const form2 = document.getElementById('emailForm2');
+            const emailInput2 = document.getElementById('emailInput2');
+            
+            if (form2 && emailInput2) {
+                // Real-time validation on blur
+                emailInput2.addEventListener('blur', function() {
+                    const email = this.value.trim();
+                    if (email) {
+                        const validation = validateEmail(email);
+                        if (!validation.valid) {
+                            showError('emailInput2', 'emailError2', validation.message);
+                        } else {
+                            showSuccess('emailInput2', 'emailError2');
+                        }
+                    }
+                });
+
+                // Clear validation on focus
+                emailInput2.addEventListener('focus', function() {
+                    clearValidation('emailInput2', 'emailError2');
+                });
+
+                // Form submission
+                form2.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = emailInput2.value.trim();
+                    
+                    const validation = validateEmail(email);
+                    
+                    if (!validation.valid) {
+                        showError('emailInput2', 'emailError2', validation.message);
+                        emailInput2.focus();
+                        return;
+                    }
+                    
+                    // Email is valid - submit
+                    submitToGoogleForms(email);
+                    showSuccess('emailInput2', 'emailError2');
+                    alert('Dziękujemy! 🎉\n\nDodaliśmy Cię na listę oczekujących. Powiadomimy Cię mailem, gdy tylko będziemy gotowi do startu!');
+                    emailInput2.value = '';
+                    clearValidation('emailInput2', 'emailError2');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
